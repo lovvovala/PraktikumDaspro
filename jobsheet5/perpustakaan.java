@@ -14,9 +14,9 @@ public class perpustakaan {
         System.out.println("Diperbolehkan Masuk");
     } else {
         System.out.println("Ditolak Masuk");
-    }
 
   }  
+  }
 }
     
 
