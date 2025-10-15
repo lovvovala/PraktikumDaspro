@@ -1,4 +1,4 @@
-package PraktikumDaspro.jobsheet5;
+package jobsheet5;
 import java.util.Scanner;
 public class nestedUjianSkripsi20 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package PraktikumDaspro.jobsheet5;
+package jobsheet5;
 import java.util.Scanner;
 public class tugas2j5 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package jobsheet5.UTS;
+package UTS;
 import java.util.Scanner;
 public class BMI20 {
     public static void main(String[] args) {

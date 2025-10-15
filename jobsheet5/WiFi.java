@@ -1,4 +1,4 @@
-package PraktikumDaspro.jobsheet5;
+package jobsheet5;
 import java.util.Scanner;
 public class WiFi {
     public static void main(String[] args) {
