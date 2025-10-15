@@ -4,7 +4,7 @@ public class Terbesar20 {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
     
-
+    // Menginput angka
     System.out.println("+++ MENNETUKKAN ANGKA TERBESAR ++++");
     System.out.print("Bilangan Pertama : ");
     int a = input.nextInt();
@@ -13,6 +13,7 @@ public class Terbesar20 {
     System.out.print("Bilangan Ketiga : ");
     int c = input.nextInt();
 
+    // Menentukan bilangan terbesar dan yang sama besar
    if (a > b && a > c) {
             System.out.println("Bilangan terbesar adalah = " + a);
         } else if (b > a && b > c) {
