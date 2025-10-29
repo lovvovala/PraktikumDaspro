@@ -35,7 +35,6 @@ public class KafeSenja {
             totalPelanggan += pelanggan;
             totalItem += totalItemCabang;
         }
-
         // tampilkan total keseluruhan
         System.out.println("\nTotal seluruh Cabang:");
         System.out.println("Pelanggan: " + totalPelanggan + " orang");
