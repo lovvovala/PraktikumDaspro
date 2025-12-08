@@ -80,13 +80,13 @@ public class CM2Magang20 {
         String cariProdi = input.nextLine();
         boolean ditemukan = false; // menandai apakah data ditemukan
         System.out.println("--------------------------------------------------------------------------------");
-        System.out.printf("| %-3s | %-20s | %-10s | %-15s | %-20s | %-8s | %-10s |\n",
+        System.out.printf("| %-3s | %-20s | %-15s | %-15s | %-20s | %-8s | %-10s |\n",
                 "No", "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");// menampilkan header tabel
         System.out.println("--------------------------------------------------------------------------------");
         for (int i = 0; i < jumlahdata; i++) {
             // mencari data magang mahasiswa berdasarkan prodi
             if (prodi[i].equalsIgnoreCase(cariProdi)) {
-                System.out.printf("| %-3d | %-20s | %-10s | %-15s | %-20s | %-8d | %-10s |\n",
+                System.out.printf("| %-3d | %-20s | %-15s | %-15s | %-20s | %-8d | %-10s |\n",
                         (i + 1), nama[i], nim[i], prodi[i], tuma[i], Semester[i], statusma[i]);
                 ditemukan = true; // jika data ditemukan, ubah nilai ditemukan menjadi true dan menampilkan data
             }
@@ -123,8 +123,7 @@ public class CM2Magang20 {
     public static void main(String[] args) {
         // fungsi main untuk menampilkan menu dan menjalankan program
         int pilihan;
-        // menggunakan switch case untuk memilih menu yang diinginkan sesuai dengan
-        // perintah soal
+        // menggunakan switch case untuk memilih menu yang diinginkan sesuai dengan perintah soal
         do {
             // pilihan menu (diprint)
             System.out.println("\n=== Menu Manajemen Magang Mahasiswa ===");
@@ -144,8 +143,8 @@ public class CM2Magang20 {
                     break; // menghentikan eksekusi switch setelah mengeksekusi case yang sesuai
                 case 2:
                     tampilkanData();
-                    break;
-                case 3:
+                    break; 
+                case 3: 
                     cariDatadrProdi();
                     break;
                 case 4:
