@@ -17,8 +17,23 @@ public class CM2Magang20 {
         // fungsi untuk menambah data magang mahasiswa
         System.out.print("Masukkan Nama: ");
         nama[jumlahdata] = input.nextLine();
-        System.out.print("Masukkan NIM: ");
-        nim[jumlahdata] = input.nextLine();
+        String inputNIM;
+        boolean isDuplicate;
+        do {
+            System.out.print("Masukkan NIM: ");
+            inputNIM = input.nextLine();
+            isDuplicate = false; 
+            //Mengecek ke seluruh data yang sudah tersimpan
+            for (int i = 0; i < jumlahdata; i++) {
+                //Jika input baru sama dengan salah satu data di array
+                if (inputNIM.equals(nim[i])) {
+                    System.out.println("NIM " + inputNIM + " sudah terdaftar! Gunakan NIM lain.");
+                    isDuplicate = true; 
+                    break; 
+                }
+            }
+        } while (isDuplicate); // looping akan diulangan jika ditemukan NIM yang sama (isDuplicate = true)
+        nim[jumlahdata] = inputNIM;
         System.out.print("Masukkan Prodi: ");
         prodi[jumlahdata] = input.nextLine();
         System.out.print("Masukkan Tempat Magang: ");
@@ -52,8 +67,7 @@ public class CM2Magang20 {
     }
 
     static void tampilkanData() {
-        // fungsi untuk menampilkan semua data magang mahasiswa berbentuk tabel atau
-        // format tabel
+        // fungsi untuk menampilkan semua data magang mahasiswa berbentuk tabel atau format tabel
         System.out.println("=== Data Magang Mahasiswa ===");
         if (jumlahdata == 0) {
             // mengecek apakah ada data magang mahasiswa
@@ -61,16 +75,16 @@ public class CM2Magang20 {
             return;
         }
         // menampilkan header tabel
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-3s | %-20s | %-10s | %-15s | %-20s | %-8s | %-10s |\n",
                 "No", "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < jumlahdata; i++) {
             // menampilkan setiap baris data magang mahasiswa
             System.out.printf("| %-3d | %-20s | %-10s | %-15s | %-20s | %-8d | %-10s |\n",
                     (i + 1), nama[i], nim[i], prodi[i], tuma[i], Semester[i], statusma[i]);
         }
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
     }
 
     static void cariDatadrProdi() {
@@ -78,11 +92,11 @@ public class CM2Magang20 {
         System.out.println("\n=== Cari Data Magang Mahasiswa berdasarkan Prodi ===");
         System.out.print("Masukkan Prodi yang dicari: ");
         String cariProdi = input.nextLine();
-        boolean ditemukan = false; // menandai apakah data ditemukan
-        System.out.println("--------------------------------------------------------------------------------");
+        boolean ditemukan = false; // menandai apakah data ditemukan 
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-3s | %-20s | %-15s | %-15s | %-20s | %-8s | %-10s |\n",
                 "No", "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");// menampilkan header tabel
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < jumlahdata; i++) {
             // mencari data magang mahasiswa berdasarkan prodi
             if (prodi[i].equalsIgnoreCase(cariProdi)) {
@@ -120,6 +134,40 @@ public class CM2Magang20 {
         System.out.println("Total Pendaftar: " + jumlahdata);
     }
 
+   static void cariNIMdanUbahPerusahaan() {
+        System.out.println("\n=== Ubah Tempat Magang berdasarkan NIM ===");
+        System.out.print("Masukkan NIM yang akan diubah: ");
+        String cariNIM = input.nextLine();
+        boolean ditemukan = false; // menandai apakah NIM ditemukan
+
+        for (int i = 0; i < jumlahdata; i++) {
+            if (nim[i].equalsIgnoreCase(cariNIM)) {
+                ditemukan = true;
+                System.out.println("\nData Mahasiswa Ditemukan:"); // MENAMPILKAN DATA MAHASISWA YANG DITEMUKAN
+                System.out.println("--------------------------------------------------------------------------------------------------------------");
+                System.out.printf("| %-3s | %-20s | %-15s | %-15s | %-20s | %-8s | %-10s |\n",
+                        "No", "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");
+                System.out.println("--------------------------------------------------------------------------------------------------------------");
+                System.out.printf("| %-3d | %-20s | %-15s | %-15s | %-20s | %-8d | %-10s |\n",
+                        (i + 1), nama[i], nim[i], prodi[i], tuma[i], Semester[i], statusma[i]);
+                System.out.println("--------------------------------------------------------------------------------------------------------------");
+                // Hanya bisa diubah jika status "Menunggu"
+                if (statusma[i].equalsIgnoreCase("Menunggu")) {
+                    System.out.print("\nMasukkan Tempat Magang baru: ");
+                    String tempatBaru = input.nextLine();
+                    tuma[i] = tempatBaru; // Proses mengubah data di array
+                    System.out.println("Berhasil! Tempat Magang telah diubah.");
+                } else {
+                    System.out.println("\nMaaf, data tidak bisa diubah karena status sudah '" + statusma[i] + "'.");
+                }
+                break; // Keluar dari loop karena NIM sudah ketemu
+            }
+        }// Jika NIM tidak ditemukan, tampilkan pesan
+        if (!ditemukan) {
+            System.out.println("NIM " + cariNIM + " tidak ditemukan.");
+        }
+    }
+
     public static void main(String[] args) {
         // fungsi main untuk menampilkan menu dan menjalankan program
         int pilihan;
@@ -131,9 +179,10 @@ public class CM2Magang20 {
             System.out.println("2. Tampilkan Data Magang Mahasiswa");
             System.out.println("3. Cari Data Magang Mahasiswa berdasarkan Prodi");
             System.out.println("4. Jumlah Pendaftar berdasarkan Status");
-            System.out.println("5. Keluar");
+            System.out.println("5. Ubah Tempat Magang berdasarkan NIM");
+            System.out.println("6. Keluar");
             // untuk memilih menu yang diinginkan
-            System.out.print("Pilih menu (1-5): ");
+            System.out.print("Pilih menu (1-6): ");
             pilihan = input.nextInt();
             input.nextLine();
             // menjalankan fungsi sesuai dengan pilihan menu
@@ -151,12 +200,15 @@ public class CM2Magang20 {
                     jumlahPendaftar();
                     break;
                 case 5:
-                    System.out.println("Keluar dari program."); // menu untuk keluar dari program
+                    cariNIMdanUbahPerusahaan();
+                    break;
+                case 6:
+                    System.out.println("Keluar dari program. Terima kasih!");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi."); // jika pilihan tidak sesuai dengan menu yang ada
             }
-        } while (pilihan != 5);// program akan terus berjalan sampai user memilih menu keluar
+        } while (pilihan != 6);// program akan terus berjalan sampai user memilih menu keluar
         input.close(); // menutup scanner 
     }
 }
