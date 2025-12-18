@@ -1,9 +1,7 @@
 package CaseMethod;
-
-import java.util.Scanner; // Import Scanner untuk input data
-
-public class CM2Magang20 {
-    // Deklarasi array untuk menyimpan data magang mahasiswa
+import java.util.Scanner; // Scanner untuk input data dari user
+public class UAS1A20 {
+        // Deklarasi array untuk menyimpan data magang mahasiswa
     static String[] nama = new String[100];
     static String[] nim = new String[100];
     static String[] prodi = new String[100];
@@ -212,4 +210,4 @@ public class CM2Magang20 {
         input.close(); // menutup scanner 
     }
 }
-//https://github.com/lovvovala/PraktikumDaspro/blob/main/CaseMethod/CM2Magang20.java
+
